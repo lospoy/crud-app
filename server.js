@@ -1,7 +1,6 @@
 // SIMPLE CRUD APP
 
-import {connectionString} from './config'
-
+const connectionString = require('./config')
 const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
@@ -17,9 +16,13 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
     //USE, GET, POST, LISTEN
     app.use(bodyParser.urlencoded({ extended: true}))
+
     app.get('/', (req, res) => {
       res.sendFile('/CRUDE' +'/index.html')
+      const cursor = db.collection('quotes').find()
+      console.log(cursor)
     })
+
     app.post('/quotes', (req, res) => {
       quotesCollection.insertOne(req.body)
         .then(result => {
@@ -27,10 +30,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         })
         .catch(error => console.error(error))
     })
+
     app.listen(3000, function() {
       console.log('listening on 3000')
     })
   })
+  
   .catch(error => console.error(error))
 
 
