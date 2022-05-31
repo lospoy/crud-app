@@ -1,10 +1,11 @@
 // SIMPLE CRUD APP
 
+import {connectionString} from './config'
+
 const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
 const MongoClient = require('mongodb').MongoClient
-const connectionString = 'mongodb+srv://carlos:KUw4BwEw4fSjJ3J5HUA9@clusterino.tkwee.mongodb.net/?retryWrites=true&w=majority'
 
 
 // REQUESTS HERE
