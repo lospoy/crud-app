@@ -1,3 +1,5 @@
+// SIMPLE CRUD APP
+
 const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
@@ -5,7 +7,7 @@ const MongoClient = require('mongodb').MongoClient
 const connectionString = 'mongodb+srv://carlos:KUw4BwEw4fSjJ3J5HUA9@clusterino.tkwee.mongodb.net/?retryWrites=true&w=majority'
 
 
-
+// REQUESTS HERE
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Database')
