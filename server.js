@@ -14,13 +14,16 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     const db = client.db('CRUD-APP')
     const quotesCollection = db.collection('quotes')
 
-    //USE, GET, POST, LISTEN
     app.use(bodyParser.urlencoded({ extended: true}))
 
     app.get('/', (req, res) => {
       res.sendFile('/CRUDE' +'/index.html')
-      const cursor = db.collection('quotes').find()
-      console.log(cursor)
+      
+      db.collection('quotes').find().toArray()
+      .then(results => {
+        console.log(results)
+      })
+      .catch(error => console.error(error))
     })
 
     app.post('/quotes', (req, res) => {
@@ -35,7 +38,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       console.log('listening on 3000')
     })
   })
-  
+
   .catch(error => console.error(error))
 
 
